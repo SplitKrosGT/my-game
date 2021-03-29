@@ -1,8 +1,8 @@
 document.onkeydown = checkButton;
 
 let cube = {
-    x: 0,
-    y: 0,
+    x: 600,
+    y: 500,
     id: 'main'
 }
 

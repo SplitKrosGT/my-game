@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#main {
+    width: 46px;
+    height: 93px;
+    background-image: url(gratis-png-auto-laferrari-auto-racing-camioneta-vista-superior.png);
+    position: absolute;
+    transition: all 1s ease-out;        
+}
