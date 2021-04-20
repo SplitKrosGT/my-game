@@ -20,7 +20,7 @@ let bots = [];
 
 let bot = {
     x: 0,
-    y: 0,
+    y:0,
     id: 1,
     width: 56,
     height: 56,

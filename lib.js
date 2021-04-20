@@ -45,8 +45,20 @@ function checkButton(event) {
             cube.x = map.width + map.x - cube.width;
         }
     }
-    
     renderCube(cube); // Рендер куба каждый сдвиг
+}
+
+function checkBot(bot) {
+    if (bot.y < map.height) {
+        // ArrowDown 40
+        if (bot.y + bot.height + bot.step < map.height + map.y) {
+            bot.y += bot.step;
+        }
+
+        else {
+            cube.y = map.height + map.y - cube.height;
+        }
+    }
 }
 
 function renderCube(cube) {
@@ -70,52 +82,52 @@ function renderMap(map) {
 }
 
 function spawnCube(map, cube) {
-    // let mapMinX = map.x;
-    // let mapMaxX = map.x + map.width - cube.width;
-    // let mapMinY = map.y;
-    // let mapMaxY = map.y + map.height - cube.height;
-    // cube.x = Math.round(Math.random() * (mapMaxX - mapMinX) + mapMinX); // Старый способ
+    let mapMinX = map.x;
+    let mapMaxX = map.x + map.width - cube.width;
+    let mapMinY = map.y;
+    let mapMaxY = map.y + map.height - cube.height;
+    cube.x = Math.round(Math.random() * (mapMaxX - mapMinX) + mapMinX); // Старый способ
     // cube.y = Math.round(Math.random() * (mapMaxY - mapMinY) + mapMinY);
 
     cube.x = randomInteger(map.x, map.x + map.width - cube.width);
-    //cube.y = randomInteger(map.y, map.y + map.height - cube.height);
+    // cube.y = randomInteger(map.y, map.y + map.height - cube.height);
     return cube;
 }
 
-// function spawnBot(map, bot) {
-//     bot.x = randomInteger(map.x, map.x + map.width - bot.width);
-//     bot.y = randomInteger(map.y, map.y + map.height - bot.height);
-//     return bot;
-// }
+function spawnBot(map, bot) {
+    bot.x = randomInteger(map.x, map.x + map.width - bot.width);
+    // bot.y = bot.y - bot.height;
+    return bot;
+}
 
-// function renderBots(bots) {
-//     let i = 1;
-//     bots.map(bot => {
-//         let div = document.createElement('div');
-//         bot.id = i;
-//         div.id = i;
-//         div.className = 'bot';
-//         console.log(div);
-//         document.body.append(div);
-//         renderBot(spawnBot(map, bot));
+function renderBots(bots) {
+    let i = 1;
+    bots.map(bot => {
+        let div = document.createElement('div');
+        bot.id = i;
+        div.id = i;
+        div.className = 'bot';
+        console.log(div);
+        document.body.append(div);
+        renderBot(spawnBot(map, bot));
 
-//         i++;
-//     });
+        i++;
+    });
     
-// }
+}
 
-// function renderBot(bot) {
-//     document.getElementById(bot.id).style.top = bot.y + 'px';
-//     document.getElementById(bot.id).style.left = bot.x + 'px';
-//     document.getElementById(bot.id).style.transition = 'ease ' +  bot.trn + 's';
-//     document.getElementById(bot.id).style.width = bot.width + 'px';
-//     document.getElementById(bot.id).style.height = bot.height + 'px';
-//     document.getElementById(bot.id).style.backgroundColor = bot.color;
-// }
+function renderBot(bot) {
+    document.getElementById(bot.id).style.top = bot.y + 'px';
+    document.getElementById(bot.id).style.left = bot.x + 'px';
+    document.getElementById(bot.id).style.transition = 'ease ' +  bot.trn + 's';
+    document.getElementById(bot.id).style.width = bot.width + 'px';
+    document.getElementById(bot.id).style.height = bot.height + 'px';
+    document.getElementById(bot.id).style.backgroundColor = bot.color;
+}
 
-// function randomChoice(items) { // Случайный выбор из массива
-//     return items[Math.floor(Math.random() * items.length)];
-// }
+function randomChoice(items) { // Случайный выбор из массива
+    return items[Math.floor(Math.random() * items.length)];
+}
 
 function randomInteger(min, max) { // Случайное число из диапазона
     let rand = min + Math.random() * (max + 1 - min);
