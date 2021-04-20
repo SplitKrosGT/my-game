@@ -87,7 +87,7 @@ function spawnCube(map, cube) {
     let mapMinY = map.y;
     let mapMaxY = map.y + map.height - cube.height;
     cube.x = Math.round(Math.random() * (mapMaxX - mapMinX) + mapMinX); // Старый способ
-    // cube.y = Math.round(Math.random() * (mapMaxY - mapMinY) + mapMinY);
+    cube.y = map.height - 100;
 
     cube.x = randomInteger(map.x, map.x + map.width - cube.width);
     // cube.y = randomInteger(map.y, map.y + map.height - cube.height);
@@ -112,8 +112,7 @@ function renderBots(bots) {
         renderBot(spawnBot(map, bot));
 
         i++;
-    });
-    
+    });   
 }
 
 function renderBot(bot) {

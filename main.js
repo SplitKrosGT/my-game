@@ -22,11 +22,10 @@ let bot = {
     x: 0,
     y:0,
     id: 1,
-    width: 56,
-    height: 56,
+    width: 46,
+    height: 93,
     trn: .25,
     step: 56,
-    color: 'red'
 }
 
 for (let i = randomInteger(2,4); i != 0; i--) {
